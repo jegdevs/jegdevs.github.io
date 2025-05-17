@@ -3,50 +3,873 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My GitHub Portfolio</title>
+  <title>Developer Portfolio</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f4f4f4;
-      color: #333;
+    :root {
+      --primary: #2563eb;
+      --secondary: #3b82f6;
+      --accent: #60a5fa;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --success: #10b981;
     }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: var(--light);
+      color: var(--dark);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
     header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .profile-container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    
+    header p {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background-color: white;
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    /* Navigation */
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-links a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Sections Common Styles */
+    section {
+      padding: 60px 0;
+    }
+    
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      position: relative;
+      color: var(--dark);
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* About Section */
+    .about-content {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      margin-top: 40px;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: var(--gray);
+    }
+    
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .skill-tag {
+      background-color: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .project-card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .project-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .project-content {
+      padding: 25px;
+    }
+    
+    .project-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+    
+    .project-content p {
+      color: var(--gray);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .project-tag {
+      background-color: #f1f5f9;
+      color: var(--gray);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .project-link:hover {
+      color: var(--secondary);
+    }
+    
+    /* Experience Section */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background-color: #e2e8f0;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+    }
+    
+    .timeline-content {
+      background-color: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      width: calc(50% - 30px);
+      position: relative;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: -10px;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      transform: rotate(45deg);
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      transform: rotate(45deg);
+    }
+    
+    .timeline-date {
+      position: absolute;
+      top: 12px;
+      width: 90px;
+      padding: 8px 0;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-date {
+      right: -120px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-date {
+      left: -120px;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      top: 20px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    
+    .experience-title {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
+    
+    .experience-company {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .experience-description {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    
+    .contact-info {
+      flex: 1;
+    }
+    
+    .contact-form {
+      flex: 1;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: rgba(37, 99, 235, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    .contact-text h4 {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+    
+    .contact-text p {
+      color: var(--gray);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--dark);
+      font-weight: 600;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 30px 0;
       text-align: center;
     }
-    a {
-      color: #0366d6;
-      text-decoration: none;
+    
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
     }
-    .project {
-      margin: 20px 0;
-      padding: 10px;
-      background: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    .footer-content p {
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+    
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .contact-container {
+        flex-direction: column;
+      }
+      
+      .timeline::before {
+        left: 30px;
+      }
+      
+      .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content::before,
+      .timeline-item:nth-child(even) .timeline-content::before {
+        left: -10px;
+        right: auto;
+      }
+      
+      .timeline-dot {
+        left: 30px;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-date,
+      .timeline-item:nth-child(even) .timeline-date {
+        right: auto;
+        left: -70px;
+        top: -30px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-container">
+      <div class="logo">DevPortfolio</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Header Section -->
   <header>
-    <h1>Your Name</h1>
-    <p><a href="https://github.com/yourusername" target="_blank">GitHub Profile</a></p>
+    <div class="container profile-container">
+      <img src="/api/placeholder/400/400" alt="Profile Picture" class="profile-pic">
+      <h1>Your Name</h1>
+      <p>Software Developer | UI/UX Designer | Tech Enthusiast</p>
+      <div class="social-links">
+        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
   </header>
-
-  <section>
-    <h2>My Projects</h2>
-
-    <div class="project">
-      <h3><a href="https://github.com/yourusername/project1" target="_blank">Project 1</a></h3>
-      <p>Short description of what this project does or what it's about.</p>
+  
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Hello! I'm a passionate software developer with a focus on creating intuitive, efficient, and impactful applications. With over 5 years of experience in both front-end and back-end development, I enjoy tackling complex problems and turning ideas into reality.</p>
+          <p>My journey in tech began when I built my first website at the age of 14, and since then, I've been captivated by the endless possibilities of technology. I'm particularly interested in web development, mobile applications, and exploring emerging technologies like AI and blockchain.</p>
+          <p>When I'm not coding, you can find me hiking, reading science fiction, or experimenting with new recipes in the kitchen.</p>
+          <div class="skills">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">UI/UX Design</span>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="project">
-      <h3><a href="https://github.com/yourusername/project2" target="_blank">Project 2</a></h3>
-      <p>Another brief description of this project.</p>
-    </div>
-
-    <!-- Add more projects here -->
   </section>
+  
+  <!-- Projects Section -->
+  <section id="projects" style="background-color: #f8fafc;">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <img src="/api/placeholder/600/400" alt="Project Image" class="project-img">
+          <div class="project-content">
+            <h3>Smart Task Manager</h3>
+            <p>A productivity app that uses AI to help users prioritize tasks and manage their time more effectively.</p>
+            <div class="project-tags">
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+              <span class="project-tag">TensorFlow</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/smart-task-manager" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="#" class="project-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <img src="/api/placeholder/600/400" alt="Project Image" class="project-img">
+          <div class="project-content">
+            <h3>E-Commerce Platform</h3>
+            <p>A full-featured online store with shopping cart, user authentication, and payment processing capabilities.</p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Express</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">Stripe API</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/ecommerce-platform" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="#" class="project-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <img src="/api/placeholder/600/400" alt="Project Image" class="project-img">
+          <div class="project-content">
+            <h3>Weather Dashboard</h3>
+            <p>An interactive weather application that provides real-time forecasts, historical data, and visualization tools.</p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Chart.js</span>
+              <span class="project-tag">Weather API</span>
+              <span class="project-tag">CSS3</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/weather-dashboard" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="#" class="project-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <img src="/api/placeholder/600/400" alt="Project Image" class="project-img">
+          <div class="project-content">
+            <h3>Fitness Tracker</h3>
+            <p>A web application that helps users track workouts, set goals, and visualize their fitness progress over time.</p>
+            <div class="project-tags">
+              <span class="project-tag">Vue.js</span>
+              <span class="project-tag">Firebase</span>
+              <span class="project-tag">D3.js</span>
+              <span class="project-tag">PWA</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/fitness-tracker" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="#" class="project-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2>Work Experience</h2>
+      <div class="timeline">
+        <!-- Experience 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023-Present</div>
+          <div class="timeline-content">
+            <h3 class="experience-title">Senior Front-End Developer</h3>
+            <p class="experience-company">Tech Innovations Inc.</p>
+            <p class="experience-description">Led the development of the company's flagship SaaS product, improving performance by 40%. Collaborated with design and product teams to implement new features and enhance user experience.</p>
+          </div>
+        </div>
+        
+        <!-- Experience 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2020-2023</div>
+          <div class="timeline-content">
+            <h3 class="experience-title">Full Stack Developer</h3>
+            <p class="experience-company">Digital Solutions Co.</p>
+            <p class="experience-description">Developed and maintained multiple client projects using React, Node.js, and MongoDB. Implemented CI/CD pipelines and improved code quality through automated testing.</p>
+          </div>
+        </div>
+        
+        <!-- Experience 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2018-2020</div>
+          <div class="timeline-content">
+            <h3 class="experience-title">Junior Web Developer</h3>
+            <p class="experience-company">WebCraft Agency</p>
+            <p class="experience-description">Built responsive websites for clients across various industries. Gained experience with JavaScript frameworks, version control systems, and agile methodologies.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" style="background-color: #f8fafc;">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Location</h4>
+              <p>San Francisco, CA</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Email</h4>
+              <p>your.email@example.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Phone</h4>
+              <p>+1 (555) 123-4567</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="contact-text">
+              <h4>LinkedIn</h4>
+              <p>linkedin.com/in/yourusername</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>Thank you for visiting my portfolio. I'm always open to new opportunities and interesting projects.</p>
+        <div class="footer-social">
+          <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://dribbble.com/yourusername" target="_blank"><i class="fab fa-dribbble"></i></a>
+        </div>
+        <div class="copyright">© 2025 Your Name. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

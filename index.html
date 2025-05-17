@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Developer Portfolio</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --primary: #2563eb;
@@ -592,6 +593,7 @@
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
   <!-- Navigation -->
@@ -608,12 +610,12 @@
   </nav>
   
   <!-- Header Section -->
-  <header>
+  <header data-aos="fade-down" data-aos-duration="1000">
     <div class="container profile-container">
-      <img src="/api/placeholder/400/400" alt="Profile Picture" class="profile-pic">
-      <h1>Your Name</h1>
-      <p>Software Developer | UI/UX Designer | Tech Enthusiast</p>
-      <div class="social-links">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e" alt="Profile Picture" class="profile-pic" data-aos="zoom-in" data-aos-delay="200">
+      <h1 data-aos="fade-up" data-aos-delay="400">Your Name</h1>
+      <p data-aos="fade-up" data-aos-delay="600">Software Developer | UI/UX Designer | Tech Enthusiast</p>
+      <div class="social-links" data-aos="fade-up" data-aos-delay="800">
         <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -623,15 +625,15 @@
   </header>
   
   <!-- About Section -->
-  <section id="about">
+  <section id="about" data-aos="fade-up" data-aos-duration="1000">
     <div class="container">
-      <h2>About Me</h2>
+      <h2 data-aos="zoom-in">About Me</h2>
       <div class="about-content">
-        <div class="about-text">
+        <div class="about-text" data-aos="fade-right" data-aos-delay="200">
           <p>Hello! I'm a passionate software developer with a focus on creating intuitive, efficient, and impactful applications. With over 5 years of experience in both front-end and back-end development, I enjoy tackling complex problems and turning ideas into reality.</p>
           <p>My journey in tech began when I built my first website at the age of 14, and since then, I've been captivated by the endless possibilities of technology. I'm particularly interested in web development, mobile applications, and exploring emerging technologies like AI and blockchain.</p>
           <p>When I'm not coding, you can find me hiking, reading science fiction, or experimenting with new recipes in the kitchen.</p>
-          <div class="skills">
+          <div class="skills" data-aos="fade-up" data-aos-delay="400">
             <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">React</span>
             <span class="skill-tag">Node.js</span>
@@ -649,13 +651,13 @@
   </section>
   
   <!-- Projects Section -->
-  <section id="projects" style="background-color: #f8fafc;">
+  <section id="projects" style="background-color: #f8fafc;" data-aos="fade-up" data-aos-duration="1000">
     <div class="container">
-      <h2>Featured Projects</h2>
+      <h2 data-aos="zoom-in">Featured Projects</h2>
       <div class="projects-grid">
         <!-- Project 1 -->
-        <div class="project-card">
-          <img src="/api/placeholder/600/400" alt="Project Image" class="project-img">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1516321310764-5f3db3e42d7b" alt="Smart Task Manager" class="project-img">
           <div class="project-content">
             <h3>Smart Task Manager</h3>
             <p>A productivity app that uses AI to help users prioritize tasks and manage their time more effectively.</p>
@@ -677,8 +679,8 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card">
-          <img src="/api/placeholder/600/400" alt="Project Image" class="project-img">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+          <img src="https://images.unsplash.com/photo-1556740738-6b4d4b4b5b5b" alt="E-Commerce Platform" class="project-img">
           <div class="project-content">
             <h3>E-Commerce Platform</h3>
             <p>A full-featured online store with shopping cart, user authentication, and payment processing capabilities.</p>
@@ -700,8 +702,8 @@
         </div>
 
         <!-- Project 3 -->
-        <div class="project-card">
-          <img src="/api/placeholder/600/400" alt="Project Image" class="project-img">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+          <img src="https://images.unsplash.com/photo-1503437313881-1d1b6b3d3b3b" alt="Weather Dashboard" class="project-img">
           <div class="project-content">
             <h3>Weather Dashboard</h3>
             <p>An interactive weather application that provides real-time forecasts, historical data, and visualization tools.</p>
@@ -723,8 +725,8 @@
         </div>
 
         <!-- Project 4 -->
-        <div class="project-card">
-          <img src="/api/placeholder/600/400" alt="Project Image" class="project-img">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="800">
+          <img src="https://images.unsplash.com/photo-1516321310764-5f3db3e42d7b" alt="Fitness Tracker" class="project-img">
           <div class="project-content">
             <h3>Fitness Tracker</h3>
             <p>A web application that helps users track workouts, set goals, and visualize their fitness progress over time.</p>
@@ -749,12 +751,12 @@
   </section>
   
   <!-- Experience Section -->
-  <section id="experience">
+  <section id="experience" data-aos="fade-up" data-aos-duration="1000">
     <div class="container">
-      <h2>Work Experience</h2>
+      <h2 data-aos="zoom-in">Work Experience</h2>
       <div class="timeline">
         <!-- Experience 1 -->
-        <div class="timeline-item">
+        <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2023-Present</div>
           <div class="timeline-content">
@@ -765,7 +767,7 @@
         </div>
         
         <!-- Experience 2 -->
-        <div class="timeline-item">
+        <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2020-2023</div>
           <div class="timeline-content">
@@ -776,7 +778,7 @@
         </div>
         
         <!-- Experience 3 -->
-        <div class="timeline-item">
+        <div class="timeline-item" data-aos="fade-right" data-aos-delay="600">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2018-2020</div>
           <div class="timeline-content">
@@ -790,11 +792,11 @@
   </section>
   
   <!-- Contact Section -->
-  <section id="contact" style="background-color: #f8fafc;">
+  <section id="contact" style="background-color: #f8fafc;" data-aos="fade-up" data-aos-duration="1000">
     <div class="container">
-      <h2>Get In Touch</h2>
+      <h2 data-aos="zoom-in">Get In Touch</h2>
       <div class="contact-container">
-        <div class="contact-info">
+        <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
           <h3>Contact Information</h3>
           <div class="contact-detail">
             <div class="contact-icon">
@@ -833,7 +835,7 @@
             </div>
           </div>
         </div>
-        <form class="contact-form">
+        <form class="contact-form" data-aos="fade-left" data-aos-delay="400">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
@@ -857,19 +859,27 @@
   </section>
   
   <!-- Footer -->
-  <footer>
+  <footer data-aos="fade-up" data-aos-duration="1000">
     <div class="container">
       <div class="footer-content">
         <p>Thank you for visiting my portfolio. I'm always open to new opportunities and interesting projects.</p>
-        <div class="footer-social">
+        <div class="footer-social" data-aos="fade-up" data-aos-delay="200">
           <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
           <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
           <a href="https://dribbble.com/yourusername" target="_blank"><i class="fab fa-dribbble"></i></a>
         </div>
-        <div class="copyright">© 2025 Your Name. All rights reserved.</div>
+        <div class="copyright" data-aos="fade-up" data-aos-delay="400">© 2025 Your Name. All rights reserved.</div>
       </div>
     </div>
   </footer>
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  </script>
 </body>
 </html>
